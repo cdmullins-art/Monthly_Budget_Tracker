@@ -1,54 +1,56 @@
-print("===== MONTHLY BUDGET TRACKER =====")
+print("===== College Of Engineering Agenda =====")
 
-monthly_income = float(input("Enter your monthly income: $"))
 
-rent = float(input("Enter your rent: $"))
-food = float(input("Enter your food expenses: $"))
-transportation = float(input("Enter your transportation expenses: $"))
-phone = float(input("Enter your phone bill: $"))
-utilities = float(input("Enter your utilities: $"))
-entertainment = float(input("Enter your entertainment expenses: $"))
-other = float(input("Enter your other expenses: $"))
+student_name = input("Enter your name: ")
+course_name = input("Enter your course name: ")
+assignment_name = input("Enter your assignment name: ")
 
-total_expenses = rent + food + transportation + phone + utilities + entertainment + other
+days_until_due = int(input("Enter days until assignment is due: "))
 
-money_left = monthly_income - total_expenses
+remaining_assignments = total_assignments - completed_assignments
 
-rent_percent = (rent / monthly_income) * 100
-food_percent = (food / monthly_income) * 100
-transportation_percent = (transportation / monthly_income) * 100
-phone_percent = (phone / monthly_income) * 100
-utilities_percent = (utilities / monthly_income) * 100
-entertainment_percent = (entertainment / monthly_income) * 100
-other_percent = (other / monthly_income) * 100
 
-total_percent = (total_expenses / monthly_income) * 100
+if total_assignments > 0:
+    completion_percent = (completed_assignments / total_assignments) * 100
+    remaining_percent = (remaining_assignments / total_assignments) * 100
+else:
+    completion_percent = 0
+    remaining_percent = 0
+  if days_until_due < 0:
+    notification = "OVERDUE"
+
+elif days_until_due == 0:
+    notification = "DUE TODAY"
+
+elif days_until_due <= 2:
+    notification = "HIGH PRIORITY"
+
+elif days_until_due <= 5:
+    notification = "MEDIUM PRIORITY"
+
+else:
+    notification = "LOW PRIORITY"
+
 
 print()
-print("===== MONTHLY BUDGET SUMMARY =====")
-print("Monthly Income: $", monthly_income)
+print("===== ENGINEERING STUDENT DASHBOARD =====")
+
+print("Student:", student_name)
+print("Course:", course_name)
+print("Assignment:", assignment_name)
+
 print()
-print("Rent: $", rent)
-print("Rent percentage:", rent_percent, "%")
+print("===== ASSIGNMENT PROGRESS =====")
+
+print("Total Assignments:", total_assignments)
+print("Completed Assignments:", completed_assignments)
+print("Remaining Assignments:", remaining_assignments)
+
+print("Completion Percentage:", completion_percent, "%")
+print("Remaining Percentage:", remaining_percent, "%")
+
 print()
-print("Food: $", food)
-print("Food percentage:", food_percent, "%")
-print()
-print("Transportation: $", transportation)
-print("Transportation percentage:", transportation_percent, "%")
-print()
-print("Phone: $", phone)
-print("Phone percentage:", phone_percent, "%")
-print()
-print("Utilities: $", utilities)
-print("Utilities percentage:", utilities_percent, "%")
-print()
-print("Entertainment: $", entertainment)
-print("Entertainment percentage:", entertainment_percent, "%")
-print()
-print("Other expenses: $", other)
-print("Other percentage:", other_percent, "%")
-print()
-print("Total Expenses: $", total_expenses)
-print("Percentage of Income Spent:", total_percent, "%")
-print("Money Left: $", money_left)
+print("===== NOTIFICATION SUMMARY =====")
+
+print("Days Until Due:", days_until_due)
+print("Notification:", notification)
