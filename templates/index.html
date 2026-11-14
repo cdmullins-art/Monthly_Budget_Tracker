@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Engineering Student Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f3f8;
+            padding: 30px;
+        }
+        .dashboard {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background: #174ea6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Engineering Student Tracker</h1>
+
+        <form method="POST">
+            <input name="student_name" placeholder="Student name" required>
+            <input name="course_name" placeholder="Course name" required>
+            <input name="assignment_name" placeholder="Assignment name" required>
+
+            <input type="number" name="days_until_due"
+                   placeholder="Days until due" required>
+
+            <input type="number" name="total_assignments"
+                   min="0" placeholder="Total assignments" required>
+
+            <input type="number" name="completed_assignments"
+                   min="0" placeholder="Completed assignments" required>
+
+            <button type="submit">Check Notifications</button>
+        </form>
+
+        {% if result %}
+            <h2>Student Dashboard</h2>
+            <p>Student: {{ result.student }}</p>
+            <p>Course: {{ result.course }}</p>
+            <p>Assignment: {{ result.assignment }}</p>
+            <p>Remaining Assignments: {{ result.remaining }}</p>
+            <p>Completion: {{ "%.1f"|format(result.completion) }}%</p>
+            <h3>Notification: {{ result.notification }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
